@@ -4,8 +4,6 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -22,6 +20,7 @@ public class FormTests {
     void fillAllFields() {
         open("/automation-practice-form");
         executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
 
         String firstName = "Shrek";
         String lastName = "Zeleniy";
@@ -47,7 +46,7 @@ public class FormTests {
         $x("(//*[@class='react-datepicker__week']//*[text()='1'])[1]").click();
         $("#subjectsInput").setValue(subjectsInput).pressEnter();
         $("#hobbiesWrapper").$(byText(hobbies)).click();
-        $("#uploadPicture").uploadFile(new File("src/test/resources/" + photoName));
+        $("#uploadPicture").uploadFromClasspath(photoName);
         $("#currentAddress").setValue(currentAddress);
         $("#state").click();
         $("#stateCity-wrapper").$(byText(state)).click();
