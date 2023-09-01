@@ -1,5 +1,6 @@
 package com.demoqa.tests;
 
+import com.demoqa.fixtures.RegistrationUser;
 import com.demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
@@ -10,52 +11,56 @@ public class RegistrationTestWithFaker extends TestBase {
 
     @Test
     void successfulRegistrationTest() {
+        RegistrationUser user = new RegistrationUser();
+
         registrationPage
                 .openPage()
                 .removeBanners()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(email)
-                .setGender(gender)
-                .setPhoneNumber(phoneNumber)
-                .setBirthDate(birthdayDay, birthdayMonth, birthdayYear)
-                .setSubjects(subject)
-                .setHobbies(hobby)
-                .setPicture(picture)
-                .setAddress(address)
-                .setState(state)
-                .setCity(city)
+                .setFirstName(user.firstName)
+                .setLastName(user.lastName)
+                .setEmail(user.email)
+                .setGender(user.gender)
+                .setPhoneNumber(user.phoneNumber)
+                .setBirthDate(user.birthdayDay, user.birthdayMonth, user.birthdayYear)
+                .setSubjects(user.subject)
+                .setHobbies(user.hobby)
+                .setPicture(user.picture)
+                .setAddress(user.address)
+                .setState(user.state)
+                .setCity(user.city)
                 .submitForm();
 
         registrationPage
                 .checkResultsTable(new String[]{
-                        String.format("%s %s", firstName, lastName),
-                        email,
-                        gender,
-                        phoneNumber,
-                        String.format("%s %s,%s", birthdayDay, birthdayMonth, birthdayYear),
-                        subject,
-                        hobby,
-                        picture,
-                        address,
-                        String.format("%s %s", state, city)});
+                        String.format("%s %s", user.firstName, user.lastName),
+                        user.email,
+                        user.gender,
+                        user.phoneNumber,
+                        String.format("%s %s,%s", user.birthdayDay, user.birthdayMonth, user.birthdayYear),
+                        user.subject,
+                        user.hobby,
+                        user.picture,
+                        user.address,
+                        String.format("%s %s", user.state, user.city)});
     }
 
     @Test
     void successfulRegistrationMinimalTest() {
+        RegistrationUser user = new RegistrationUser();
+
         registrationPage
                 .openPage()
                 .removeBanners()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGender(gender)
-                .setPhoneNumber(phoneNumber)
+                .setFirstName(user.firstName)
+                .setLastName(user.lastName)
+                .setGender(user.gender)
+                .setPhoneNumber(user.phoneNumber)
                 .submitForm();
 
         registrationPage
                 .checkResultsTable(new String[]{
-                        String.format("%s %s", firstName, lastName),
-                        gender,
-                        phoneNumber});
+                        String.format("%s %s", user.firstName, user.lastName),
+                        user.gender,
+                        user.phoneNumber});
     }
 }

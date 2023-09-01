@@ -3,8 +3,8 @@ package com.demoqa.fixtures;
 import static com.demoqa.utils.RandomUtils.*;
 
 public class RegistrationUser {
-        public static String[] birthday = getRandomBirthday();
-        public static String
+        public String[] birthday = getRandomBirthday();
+        public String
                 firstName = getRandomFirstName(),
                 lastName = getRandomLastName(),
                 email = getRandomEmail(),
