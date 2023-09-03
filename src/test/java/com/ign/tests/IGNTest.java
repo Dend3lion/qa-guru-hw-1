@@ -31,7 +31,7 @@ public class IGNTest extends TestBase {
     })
     @ParameterizedTest(name = "Category {0} should be present")
     @DisplayName("Navigation menu should display valid categories")
-    void CategoriesTest(String category) {
+    void categoriesTest(String category) {
         $(".sidebar-section").$(byText(category)).shouldBe(visible);
     }
 
@@ -42,7 +42,7 @@ public class IGNTest extends TestBase {
     })
     @ParameterizedTest(name = "Game {0} should be published by {1}")
     @DisplayName("Searched games should display valid name, publisher, release date")
-    void SearchResultsTest(String name, String publisher) {
+    void searchResultsTest(String name, String publisher) {
         $(".sidebar-section").$(byText("Search")).click();
         $("input[type='search']").setValue(name);
         $("a[title='Go to game']").shouldHave(text(publisher));
