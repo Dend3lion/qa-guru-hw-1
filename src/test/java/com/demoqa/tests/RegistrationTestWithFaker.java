@@ -1,20 +1,16 @@
 package com.demoqa.tests;
 
-import com.codeborne.selenide.logevents.SelenideLogger;
 import com.demoqa.fixtures.RegistrationUser;
 import com.demoqa.pages.RegistrationPage;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-public class RegistrationTestWithFaker extends TestBase {
+public class RegistrationTestWithFaker extends RemoteTestBase {
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Tag("remote")
     @Test
     void successfulRegistrationTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-
         RegistrationUser user = new RegistrationUser();
 
         registrationPage
@@ -51,8 +47,6 @@ public class RegistrationTestWithFaker extends TestBase {
     @Tag("remote")
     @Test
     void successfulRegistrationMinimalTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-
         RegistrationUser user = new RegistrationUser();
 
         registrationPage
