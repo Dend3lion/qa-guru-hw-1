@@ -22,7 +22,7 @@ public interface WebConfig extends Config{
     String getBrowserVersion();
 
     @Key("isRemote")
-    @DefaultValue("true")
+    @DefaultValue("false")
     Boolean isRemote();
 
     @Key("remoteHost")
