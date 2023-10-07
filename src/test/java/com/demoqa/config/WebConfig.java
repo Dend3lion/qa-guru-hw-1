@@ -2,7 +2,7 @@ package com.demoqa.config;
 
 import org.aeonbits.owner.Config;
 @Config.Sources({
-        "classpath:${env}.properties",
+        "classpath:config/${env}.properties",
 })
 public interface WebConfig extends Config{
     @Key("baseUrl")
